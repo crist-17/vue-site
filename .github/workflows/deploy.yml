@@ -2,26 +2,49 @@ name: Deploy Vite App
 
 on:
   push:
-    branches: [ main ]         # 푸시하는 브랜치명 다르면 여기 바꾸기
-
-defaults:
-  run:
-    working-directory: day01_0825/Ex_proj   # ← 앱 폴더 경로
+    branches: [ main ]        # 푸시하는 브랜치명이 다르면 수정
 
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+
     steps:
       - uses: actions/checkout@v4
+
+      # (디버그) 실제 폴더 구조 찍기 — 경로 문제 바로 잡기
+      - name: Show repo tree
+        run: |
+          pwd
+          ls -la
+          echo "---- day01_0825 ----"
+          ls -la day01_0825 || true
+          echo "---- Ex_proj ----"
+          ls -la day01_0825/Ex_proj || true
+
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-      - run: npm ci || npm install
-      - run: npm run build
+
+      # ⬇️ 앱 폴더에서 설치/빌드 (경로 정확히!)
+      - name: Install
+        working-directory: day01_0825/Ex_proj
+        run: npm ci || npm install
+
+      - name: Build
+        working-directory: day01_0825/Ex_proj
+        env:
+          CI: false
+        run: npm run build
+
+      - name: Check dist
+        working-directory: day01_0825/Ex_proj
+        run: |
+          test -d dist && (echo "dist exists"; ls -la dist) || (echo "NO dist!"; exit 1)
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: day01_0825/Ex_proj/dist   # ← 빌드 결과 경로
+          publish_dir: day01_0825/Ex_proj/dist
