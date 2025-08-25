@@ -2,7 +2,11 @@ name: Deploy Vite App
 
 on:
   push:
-    branches: [ main ]   # 브랜치명이 main이 아니면 여기 바꾸세요
+    branches: [ main ]         # 푸시하는 브랜치명 다르면 여기 바꾸기
+
+defaults:
+  run:
+    working-directory: day01_0825/Ex_proj   # ← 앱 폴더 경로
 
 jobs:
   build:
@@ -20,4 +24,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          publish_dir: day01_0825/Ex_proj/dist   # ← 빌드 결과 경로
