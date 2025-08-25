@@ -5,8 +5,10 @@ import Ex1 from './components/Ex1.vue';
 import Ex2 from './components/Ex2.vue';
 import Ex3 from './components/Ex3.vue';
 import Ex4 from './components/Ex4.vue';
+import Ex5 from './components/Ex5.vue';
+import Ex6 from './components/Ex6.vue';
 
-const pages = { Ex1, Ex2, Ex3, Ex4 }
+const pages = { Ex1, Ex2, Ex3, Ex4, Ex5, Ex6 }
 const activeComp = ref("Ex4")
 
 </script>
@@ -20,6 +22,8 @@ const activeComp = ref("Ex4")
   <button @click="activeComp = 'Ex2'">if_이프</button>
   <button @click="activeComp = 'Ex3'">show_쇼우</button>
   <button @click="activeComp = 'Ex4'">for_포</button>
+  <button @click="activeComp = 'Ex5'">event_이벤트</button>
+  <button @click="activeComp = 'Ex6'">V - ON</button>
 
   <div id="comp_view">
 
@@ -53,14 +57,16 @@ const activeComp = ref("Ex4")
   padding: 50px;
   box-shadow: 0px 0px 50px;
 }
+
 button {
   border: 3px solid green;
- margin-left: 15px;
- 
+  margin-left: 15px;
+
 }
+
 button:hover {
-   transform: translateY(-3px);
-   border-color: blue;
-   background-color: rgb(133, 248, 185);
+  transform: translateY(-3px);
+  border-color: blue;
+  background-color: rgb(133, 248, 185);
 }
 </style>
