@@ -51,5 +51,16 @@ const activeComp = ref("Ex4")
   border: 2px solid green;
   border-radius: 25px;
   padding: 50px;
+  box-shadow: 0px 0px 50px;
+}
+button {
+  border: 3px solid green;
+ margin-left: 15px;
+ 
+}
+button:hover {
+   transform: translateY(-3px);
+   border-color: blue;
+   background-color: rgb(133, 248, 185);
 }
 </style>
