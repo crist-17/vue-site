@@ -3,10 +3,9 @@
     <!-- 상단 이미지 -->
     <header class="hero-box">
       <img class="hero" :src="img_beach3" alt="beach" />
-       <figcaption class="caption">
-      바닷가 풍경 (import + v-bind 예제)
-    </figcaption>
-    
+      <p>바닷가 풍경 (import + v-bind 예제)</p>
+     
+   
     </header>
 
     <!-- 폰트 크기 -->
