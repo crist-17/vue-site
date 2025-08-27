@@ -68,13 +68,16 @@ const go = (key) => { active.value = key }
 .app-header{
   position: fixed; top:0; left:0; right:0;
   height: 64px;
-  background: #fff;
+  background: #040a04;
   border-bottom: 1px solid #e5e5e5;
   display:flex; align-items:center; justify-content: space-between;
   padding: 0 16px;
   z-index: 1000;
 }
-.logo{ font-size:20px; font-weight:700; }
+.logo{
+ font-size:20px; font-weight:700; 
+ color: #fff;
+ }
 
 /* ===== 레이아웃 컨테이너 (헤더 높이만큼 아래로) ===== */
 .layout{
@@ -87,8 +90,8 @@ const go = (key) => { active.value = key }
   position: fixed; top: 64px; left: 0;
   width: 220px;
   height: calc(100vh - 64px);   /* 헤더 제외 높이 */
-  background: #fafafa;
-  border-right: 1px solid #e5e5e5;
+  background: #e7fcf7;
+  border-right: 3px solid #08a02e;
   padding: 16px;
   overflow: auto;               /* 메뉴 길면 내부 스크롤 */
 }
