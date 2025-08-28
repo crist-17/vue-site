@@ -57,7 +57,7 @@
 
       <div v-if="text2.includes('피자')" class="pizza">
         <p>피자</p>
-        <img src="../assets/img_pizza.svg" alt="pizza" />
+        <img src="../../assets/img_pizza.svg" alt="pizza" />
       </div>
       <p class="out" v-else>피자없음</p>
     </section>
