@@ -2,7 +2,8 @@ name: Deploy Vite to GitHub Pages
 
 on:
   push:
-    branches: [ main ]   # ← main에 푸시할 때마다 배포
+    branches: [ main ]   # main에 푸시될 때마다 배포
+  workflow_dispatch: {}  # 필요하면 수동 실행도 허용
 
 permissions:
   contents: read
@@ -10,29 +11,35 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: true
+
+# ✅ 리포 안의 실제 프로젝트 경로로 고정 (여기만 네 구조에 맞게!)
+defaults:
+  run:
+    working-directory: day01_0825/Ex_proj
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
+          # package-lock.json이 그 폴더에 있으면 캐시 경로 지정
+          cache-dependency-path: day01_0825/Ex_proj/package-lock.json
 
+      # package-lock.json이 없으면 npm ci가 실패하므로 install로 안전하게
       - name: Install deps
-        run: npm ci
+        run: npm install
 
       - name: Build
         run: npm run build
 
-      - name: Add 404 & nojekyll
+      - name: Add 404 & .nojekyll
         run: |
           cp dist/index.html dist/404.html
           touch dist/.nojekyll
@@ -40,7 +47,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          # ✅ 업로드 경로도 서브폴더 기준으로
+          path: day01_0825/Ex_proj/dist
 
   deploy:
     needs: build
@@ -49,6 +57,5 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - id: deployment
         uses: actions/deploy-pages@v4
