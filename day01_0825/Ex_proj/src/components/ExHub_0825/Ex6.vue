@@ -9,8 +9,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import pic_bulboff from '../assets/pic_bulboff.gif'
-import pic_bulbon from '../assets/pic_bulbon.gif'
+import pic_bulboff from '../../assets/pic_bulboff.gif'
+import pic_bulbon from '../../assets/pic_bulbon.gif'
 
 const lightOn = ref(false)
 const toggle = () => (lightOn.value = !lightOn.value)

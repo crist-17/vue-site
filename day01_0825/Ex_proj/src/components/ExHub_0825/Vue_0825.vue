@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from 'vue'
-import Ex1 from '../components/Ex1.vue'
-import Ex2 from '../components/Ex2.vue'
-import Ex3 from '../components/Ex3.vue'
-import Ex4 from '../components/Ex4.vue'
-import Ex5 from '../components/Ex5.vue'
-import Ex6 from '../components/Ex6.vue'
+import Ex1 from './Ex1.vue';
+import Ex2 from './Ex2.vue';
+import Ex3 from './Ex3.vue';
+import Ex4 from './Ex4.vue';
+import Ex5 from './Ex5.vue';
+import Ex6 from './Ex6.vue';
 
 const pages = { Ex1, Ex2, Ex3, Ex4, Ex5, Ex6 }
 const activeComp = ref("Ex4")

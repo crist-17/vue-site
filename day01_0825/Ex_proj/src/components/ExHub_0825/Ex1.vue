@@ -55,7 +55,7 @@
 
 <script setup>
 import { ref } from 'vue'
-import img_beach3 from '../assets/img_beach3.jpg'
+import img_beach3 from '../../assets/img_beach3.jpg'
 
 // 상태값
 const fontSize = ref(32)

@@ -8,7 +8,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import img_moose from '../assets/img_moose.jpg'
+import img_moose from '../../assets/img_moose.jpg'
 
 const count = ref(0)
 </script>

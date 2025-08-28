@@ -13,13 +13,13 @@
 <script setup>
 
 import { ref } from 'vue';
-import img_Burrito from '../assets/img_burrito.svg'
-import img_salad from '../assets/img_salad.svg'
-import img_cake from '../assets/img_cake.svg'
-import img_soup from '../assets/img_soup.svg'
-import img_fish from '../assets/img_fish.svg'
-import img_pizza from '../assets/img_pizza.svg'
-import img_rice from '../assets/img_rice.svg'
+import img_Burrito from '../../assets/img_burrito.svg'
+import img_salad from '../../assets/img_salad.svg'
+import img_cake from '../../assets/img_cake.svg'
+import img_soup from '../../assets/img_soup.svg'
+import img_fish from '../../assets/img_fish.svg'
+import img_pizza from '../../assets/img_pizza.svg'
+import img_rice from '../../assets/img_rice.svg'
 
 const manyFoods2 = ref([
     img_Burrito,

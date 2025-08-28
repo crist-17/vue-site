@@ -1,10 +1,11 @@
 <script setup>
 import { ref } from 'vue';
-import D1_bind from './components/D1_bind.vue';
-import D2_if from './components/D2_if.vue';
-import D3_show from './components/D3_show.vue';
-import D4_for from './components/D4_for.vue';
-import D5_event from './components/D5_event.vue';
+import D1_bind from './D1_bind.vue';
+import D2_if from './D2_if.vue';
+import D3_show from './D3_show.vue';
+import D4_for from './D4_for.vue';
+import D5_event from './D5_event.vue';
+
 
 //컨포넌트 맵
 const pages = { D1_bind, D2_if, D3_show, D4_for, D5_event }
