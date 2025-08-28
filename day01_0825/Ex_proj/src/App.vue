@@ -5,7 +5,7 @@
 <template>
 
 
-  <p>경로  {{ $route.fullPath }}</p> 
+  <p>경로 들어가기  {{ $route.fullPath }}</p> 
    <nav>
     <ul>
    
