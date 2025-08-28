@@ -1,6 +1,7 @@
 
 import { createRouter, createMemoryHistory } from 'vue-router'
 import ExHub from './page/ExHub.vue'
+import Home from './page/Home.vue'
 
 const routes = [
     { path: '/study/', component: ExHub },
@@ -19,11 +20,16 @@ const routes = [
     //         },
     //     ],   
     // },
+       { path: '/', name: 'home', component: Home },
 ]
 
 const router = createRouter({
     history: createMemoryHistory(),
     routes,
+    
+    scrollBehavior() {
+    return { top: 0 }
+  },
 })
 
 export default router
