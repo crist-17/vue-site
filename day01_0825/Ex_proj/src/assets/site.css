@@ -32,17 +32,20 @@ button { cursor: pointer; }
 
 /* ===== Header / GNB ===== */
 .site-header {
-  position: sticky; top: 0; z-index: 1000;
+  position: sticky; top: 0; z-index: 5000;
   background: #fff; border-bottom: 1px solid var(--line);
+  overflow: visible;
+ z-index: 5000;
 }
 .header-inner {
   max-width: 1200px; margin: 0 auto; padding: 12px 16px;
   display: flex; align-items: center; gap: 24px;
+  position: relative; z-index: 5000;
 }
 .logo img { height: 40px; display: block; }
 
 .top-nav { margin-left: auto; }
-.gnb { display: flex; gap: 8px; }
+.gnb { display: flex; gap: 8px; z-index: 5000; }
 .gnb-item > a, .gnb-item > .router-link-active, .gnb-item > .router-link-exact-active {
   display: inline-block;
   padding: 10px 14px;
@@ -58,32 +61,60 @@ button { cursor: pointer; }
 }
 
 /* 서브메뉴 (드롭다운) */
-.has-sub { position: relative; }
-.submenu {
-  position: absolute; left: 0; top: calc(100% + 8px);
-  min-width: 200px; background: #f9fafb; border: 1px solid var(--line);
-  border-radius: 12px; padding: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.08);
-  opacity: 0; transform: translateY(-6px); pointer-events: none;
+.has-sub { position: relative; 
+z-index: 5001;
+}
+
+/* 트리거와 서브메뉴 사이 갭을 메워서 hover가 끊기지 않게 */
+.has-sub::after{
+  content:"";
+  position:absolute;
+  left:0; right:0;
+  top:100%;
+  height: 12px;                 /* 갭(8px)보다 크게 */
+  /* pointer-events: none;  ← 기본값이라 생략 가능 */
+}
+
+/* 네 기존 코드 유지 + 약간만 다듬기 */
+.submenu{
+  position:absolute; 
+  left:0; 
+  top: calc(100% + 8px);
+  min-width:200px; 
+  background:#f9fafb; 
+  border:1px solid var(--line);
+  border-radius:12px;
+   padding:8px; 
+   box-shadow:0 10px 30px rgba(0,0,0,.08);
+  opacity:0; 
+  transform: translateY(-6px);
+  pointer-events:none;
   transition: opacity .18s ease, transform .18s ease;
+  z-index: 5002;
 }
-.submenu li a {
-  display: block; padding: 10px 12px; border-radius: 8px;
-}
-.submenu li a:hover { background: #fff; border: 1px solid var(--line); }
+
 .has-sub:hover .submenu,
-.has-sub:focus-within .submenu {
-  opacity: 1; transform: translateY(0); pointer-events: auto;
+.has-sub:focus-within .submenu{
+  opacity:1; transform: translateY(0);
+  pointer-events:auto;          /* 열렸을 때만 클릭 가능 */
+}
+.submenu li a{
+  display:block; padding:10px 12px; border-radius:8px;
+}
+.submenu li a:hover{
+  background:#fff; border:1px solid var(--line);
 }
 
 /* 경로 표시 */
 .route-indicator {
   max-width: 1200px; margin: 8px auto; padding: 0 16px; color: var(--muted);
   font-size: 14px;
+  z-index: 1;
+  overflow: visible;
 }
 
 /* ===== Main ===== */
-.site-main { max-width: 1200px; margin: 0 auto; padding: 0 16px 60px; }
+.site-main { max-width: 1200px; margin: 0 auto; padding: 0 16px 60px; z-index: 1; }
 
 /* ===== Hero Slider ===== */
 .hero { position: relative; overflow: hidden; border-radius: 16px; margin: 20px 0; }

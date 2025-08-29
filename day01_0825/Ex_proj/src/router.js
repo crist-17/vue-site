@@ -2,9 +2,11 @@
 import { createRouter, createMemoryHistory } from 'vue-router'
 import ExHub from './page/ExHub.vue'
 import Home from './page/Home.vue'
+import Ex_web from './page/Ex_web.vue'
 
 const routes = [
-    { path: '/study/', component: ExHub },
+    { path: '/study', name: 'ExHub', component: ExHub },
+    { path: '/ex_web', name: 'Ex_web', component: Ex_web },
    
     // {
     //     path: "/wd/",

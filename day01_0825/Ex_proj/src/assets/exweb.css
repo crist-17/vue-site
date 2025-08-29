@@ -1,0 +1,119 @@
+/* src/styles/ex_web.css */
+/* ===== 색상 가이드 ===== */
+:root {
+  --main: #2e7d32;     /* Main color: 초록 */
+  --sub:  #66bb6a;     /* Sub color */
+  --bg:   #ffffff;     /* Background */
+  --text: #333333;     /* Text */
+  --line: #e5e5e5;
+}
+
+/* 전역 베이스 */
+.exweb { color: var(--text); background: var(--bg); font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.exweb a { color: inherit; text-decoration: none; }
+.exweb img { max-width: 100%; display: block; }
+
+/* 컨테이너: 1000px 좌측 정렬(시험 요구) */
+.exweb .hdr,
+.exweb .grid,
+.exweb .ftr .ftr-wrap {
+  width: 1000px;
+  margin-left: 0;   /* 좌측 정렬 */
+  margin-right: auto;
+}
+
+/* Ⓐ Header */
+.hdr { height: 60px; display: flex; align-items: center; border-bottom: 1px solid var(--line); }
+.logo-wrap { width: 200px; height: 40px; display: flex; align-items: center;
+background-color: #2e7d32;
+width: 100%;
+height: 60px;
+}
+.logo img { width: 200px; height: 40px; object-fit: contain; }
+
+/* 본문 그리드: 좌측 200 + 우측 나머지 */
+.grid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 16px;
+}
+
+/* 사이드바 */
+.side { border-right: 1px dashed #bbb; padding-right: 12px; }
+.mainmenu { list-style: none; margin: 0; padding: 0; }
+.main-li { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-bottom: 10px; }
+.main-btn {
+  width: 100%; text-align: left; padding: 10px 12px;
+  background: #f7f7f7; border: 0; cursor: pointer; font-weight: 600;
+}
+.main-li.open .main-btn,
+.main-btn:focus { outline: 2px solid var(--sub); background: #f0fff5; }
+
+.submenu { list-style: none; margin: 0; padding: 0; max-height: 0; overflow: hidden; transition: max-height .3s ease; background: #fbfffb; }
+.main-li .submenu { max-height: 240px; } /* 드롭다운 펼침 */
+.submenu li a { display: block; padding: 9px 12px; border-top: 1px solid var(--line); }
+.submenu li a:hover, .submenu li a:focus { background: var(--sub); color: #fff; }
+
+/* 메인 */
+.main { padding-bottom: 16px; }
+
+/* Ⓑ 슬라이드 높이: 350px (요구) */
+.slide { height: 350px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; position: relative; }
+.slides { width: 100%; height: 100%; position: relative; }
+.slide-item { position: absolute; inset: 0; opacity: 0; transition: opacity .6s ease; }
+.slide-item.is-active { opacity: 1; }
+.slide-item img { width: 100%; height: 100%; object-fit: cover; }
+.caption { position: absolute; left: 24px; bottom: 20px; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.45); }
+.caption strong { display: block; font-size: 28px; line-height: 1.2; }
+.caption span { font-size: 16px; }
+
+/* Ⓒ 카드 3분할: 높이 200px (요구) */
+.cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 16px; }
+.card { border: 1px solid var(--line); border-radius: 12px; min-height: 200px; background: #fff; }
+
+/* 탭 */
+.tabs .tab-head { display: flex; gap: 6px; padding: 8px; border-bottom: 1px solid var(--line); background: #f7f7f7; }
+.tab-btn { padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px 8px 0 0; background: #fff; cursor: pointer; }
+.tab-btn.is-active { background: var(--main); color: #fff; border-color: var(--main); }
+.tab-panel { display: none; padding: 10px 12px; }
+.tab-panel.is-active { display: block; }
+
+/* 공지 */
+.notice-list { margin: 0; padding: 0 4px; list-style: none; }
+.notice-item a { display: block; padding: 8px 6px; border-bottom: 1px dashed #ddd; }
+.notice-item a:hover, .notice-item a:focus { color: var(--main); text-decoration: underline; }
+
+/* 갤러리 */
+.gallery { list-style: none; margin: 6px 8px; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.gallery img { width: 100%; height: 100px; object-fit: cover; border-radius: 8px; }
+
+/* 배너 */
+.banner-link { display: block; height: 100%; padding: 16px; border-radius: 12px; background: linear-gradient(135deg, var(--sub), #b2fab4); }
+.banner-link h3 { margin: 0 0 8px; color: #0e4d1b; }
+.banner-link p { margin: 0; }
+
+/* 바로가기 */
+.quick-list { list-style: none; margin: 0; padding: 12px; display: grid; gap: 8px; }
+.qk { display: block; text-align: center; padding: 12px; border: 1px solid var(--sub); border-radius: 10px; }
+.qk:hover, .qk:focus { background: var(--sub); color: #fff; }
+
+/* Ⓒ 레이어 모달 */
+.modal[hidden] { display: none; }
+.modal { position: fixed; inset: 0; z-index: 50; }
+.modal-dim { position: absolute; inset: 0; background: rgba(0,0,0,.45); }
+.modal-box {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 420px; max-width: calc(100% - 40px); background: #fff; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,.35); overflow: hidden;
+}
+.modal-hd { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #f6fff6; border-bottom: 1px solid var(--line); }
+.modal-close { border: 1px solid var(--line); background: #fff; border-radius: 8px; width: 34px; height: 28px; cursor: pointer; }
+.modal-bd { padding: 14px 12px; line-height: 1.6; }
+
+/* Ⓓ Footer 높이 100px (요구) */
+.ftr { border-top: 1px solid var(--line); margin-top: 16px; }
+.ftr .ftr-wrap { height: 100px; display: grid; grid-template-columns: 200px 1fr; align-items: center; }
+.ftr-logo img { width: 50px; filter: grayscale(100%); margin-left: 80px; }
+.ftr-menu { display: flex; gap: 12px; }
+.copy { display: block; margin-top: 6px; color: #666; font-size: 12px; }
+
+/* CSS 비활성 시 세로 나열: 기본 블록 흐름으로 이미 충족 */

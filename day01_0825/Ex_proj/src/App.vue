@@ -44,12 +44,16 @@ import img_rice from './assets/img_rice.svg'
           <li class="gnb-item">
             <RouterLink to="/study">스터디</RouterLink>
           </li>
+           <li class="gnb-item">
+            <RouterLink to="/ex_web">예제링크</RouterLink>
+          </li>
+
         </ul>
       </nav>
     </div>
   </header>
 
-  <p class="route-indicator">경로 들어가기 {{ $route.fullPath }}</p>
+  <p class="route-indicator"><b>스터디를 클릭하세요</b></p>
 
   <main id="main" class="site-main" role="main">
     <RouterView />
